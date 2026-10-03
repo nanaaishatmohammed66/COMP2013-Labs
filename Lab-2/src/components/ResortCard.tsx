@@ -1,6 +1,6 @@
 import type {ResortListing} from "../Data/data";
 export default function ResortCard({
-   // id,
+   //id,
   pic,
   country,
   location,
@@ -10,8 +10,8 @@ export default function ResortCard({
 {
     const ratingStyle = {color: rating > 4.0 ? "green" : "red"};
     ;
-    return (<div>
-      <img src={pic} alt="" width="100px"/>
+    return (<div className="Express">
+      <img src={pic} alt="" width="150px"/>
       <h2>{country}</h2>
       <p style={{fontStyle: "italic" ,color:"grey"}}>{location}</p>
       <p style={ratingStyle}>{rating}★</p>
