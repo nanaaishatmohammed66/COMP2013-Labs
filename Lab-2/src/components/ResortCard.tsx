@@ -1,6 +1,6 @@
 import type {ResortListing} from "../Data/data";
 export default function ResortCard({
-    id,
+   // id,
   pic,
   country,
   location,

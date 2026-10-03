@@ -10,7 +10,7 @@ export interface ResortListing {
 const listings: ResortListing[] = [
   {
     id: 1,
-    pic: "/src/assets/images/1.jpg",
+    pic: "/src/assets/image/1.jpg",
     country: "Indonesia",
     location: "Gili Air Hotel",
     rating: 4.8,
@@ -18,7 +18,7 @@ const listings: ResortListing[] = [
   },
   {
     id: 2,
-    pic: "/src/assets/images/2.jpg",
+    pic: "/src/assets/image/2.jpg",
     country: "Seychelles",
     location: "Hilton Resort",
     rating: 4.2,
@@ -26,7 +26,7 @@ const listings: ResortListing[] = [
   },
   {
     id: 3,
-    pic: "/src/assets/images/3.jpg",
+    pic: "/src/assets/image/3.jpg",
     country: "Virgin Islands",
     location: "Goa Resort",
     rating: 3.5,
@@ -34,7 +34,7 @@ const listings: ResortListing[] = [
   },
   {
     id: 4,
-    pic: "/src/assets/images/4.jpg",
+    pic: "/src/assets/image/4.jpg",
     country: "Bahamas",
     location: "Kuredu Resort",
     rating: 4.2,
@@ -42,7 +42,7 @@ const listings: ResortListing[] = [
   },
   {
     id: 5,
-    pic: "/src/assets/images/5.jpg",
+    pic: "/src/assets/image/5.jpg",
     country: "Mauritius",
     location: "Tour D'eau Douce",
     rating: 4.9,
@@ -50,7 +50,7 @@ const listings: ResortListing[] = [
   },
   {
     id: 6,
-    pic: "/src/assets/images/6.jpg",
+    pic: "/src/assets/image/6.jpg",
     country: "Bermuda",
     location: "Staniel Cay Hotel",
     rating: 3.2,
