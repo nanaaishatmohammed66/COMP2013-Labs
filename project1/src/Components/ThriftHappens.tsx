@@ -26,6 +26,12 @@ export interface checkoutCardprops {
   quantity: number;
 }
 
+export interface CheckoutContainerProps {
+  checkoutProduct: checkoutCardprops[];
+  handleRemoveFromCart: (id: number) => void;
+  handleEmptyCheckout: () => void;
+}
+
 export interface ItemCardFunctions extends ClothingProduct {
   handleAddToCart: (id: number, itemQuantity: number) => void;
 }
@@ -88,6 +94,25 @@ export default function ThriftHappens() {
   );
 };
 
+const handleEmptyCheckout = () => {
+  setProducts((previous) =>
+    previous.map((item) => {
+      const checkoutItem = checkoutProduct.find(
+        (product) => product.id === item.id
+      );
+
+      if (!checkoutItem) return item;
+
+      return {
+        ...item,
+        quantity: item.quantity + checkoutItem.quantity,
+      };
+    })
+  );
+
+  setCheckoutProducts([]);
+};
+
   return (
   <div>
     <h1>ThriftHappens</h1>
@@ -100,6 +125,7 @@ export default function ThriftHappens() {
     <CheckoutContainer
       checkoutProduct={checkoutProduct}
       handleRemoveFromCart={handleRemoveFromCart}
+       handleEmptyCheckout={handleEmptyCheckout}
     />
   </div>
 )
