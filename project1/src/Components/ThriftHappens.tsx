@@ -12,6 +12,8 @@ import CheckoutContainer from "./CheckoutContainer";
 export interface ItemContainerProps {
   products: ClothingProduct[];
   handleAddToCart: (id: number, itemQuantity: number) => void;
+
+
 }
 export interface checkoutCardprops {
   id: number;
@@ -24,6 +26,8 @@ export interface checkoutCardprops {
   size: ClothingSize;
   price: number;
   quantity: number;
+  handleRemoveFromCart: (id: number) => void;
+
 }
 
 export interface CheckoutContainerProps {
@@ -121,6 +125,9 @@ const handleEmptyCheckout = () => {
       handleAddToCart={handleAddToCart}
       products={products}
     />
+
+  <h1>Cart</h1>
+<button onClick={() => handleEmptyCheckout()}>Empty Checkout</button>
 
     <CheckoutContainer
       checkoutProduct={checkoutProduct}
