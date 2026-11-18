@@ -12,7 +12,7 @@ export default function ItemCard({
   price,
   quantity,
   handleAddToCart,
-}:ItemCardFunctions) {
+}: ItemCardFunctions) {
   const [itemQuantity, setItemQuantity] = useState<number>(0);
   return (
     <div className="ItemCard">
@@ -30,6 +30,7 @@ export default function ItemCard({
       </b>
 
       <button
+        disabled={quantity === 0}
         onClick={() =>
           setItemQuantity((itemQuantity) =>
             Math.min(Math.max(itemQuantity - 1, 0), quantity),
@@ -40,6 +41,7 @@ export default function ItemCard({
       </button>
       <p>{itemQuantity}</p>
       <button
+        disabled={quantity === 0}
         onClick={() =>
           setItemQuantity((itemQuantity) =>
             Math.min(Math.max(itemQuantity + 1, 0), quantity),
@@ -49,9 +51,16 @@ export default function ItemCard({
         +
       </button>
       <br />
-      <button onClick={() => handleAddToCart(id, itemQuantity)}>
-  Add to cart
-</button>
+      <button
+        disabled={quantity === 0 || itemQuantity === 0}
+        onClick={() => {
+          handleAddToCart(id, itemQuantity);
+          setItemQuantity(0);
+        }}
+      >
+        Add to cart
+      </button>
+      <h3>{quantity === 0 && "Out of stock"}</h3>
     </div>
   );
 }
