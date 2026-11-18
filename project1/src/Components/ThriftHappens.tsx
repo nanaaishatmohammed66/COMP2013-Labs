@@ -55,15 +55,26 @@ export default function ThriftHappens() {
 
   const handleAddToCart = (id: number, itemQuantity: number) => {
   const chooseProduct = products.find((entry) => entry.id === id);
+  const existingProduct = checkoutProduct.find((entry) => entry.id == id);
 
   if (!chooseProduct) return;
 
   if (itemQuantity <= 0 || itemQuantity > chooseProduct.quantity) return;
 
-  setCheckoutProducts((previous) => [
+    if(!existingProduct)
+    {
+      setCheckoutProducts((previous)=>[...previous, {...chooseProduct, quantity: itemQuantity}]);
+    }
+    else
+    {
+      setCheckoutProducts((previous) => previous.map((entry) => entry.id == id ? {...entry, quantity: entry.quantity + itemQuantity} : entry))
+    }
+    
+
+  /*setCheckoutProducts((previous) => [
     ...previous,
     { ...chooseProduct, quantity: itemQuantity },
-  ]);
+  ]);*/
 
   setProducts((previous) =>
     previous.map((item) =>
@@ -72,8 +83,8 @@ export default function ThriftHappens() {
         : item
     )
   );
-};
-
+  }
+  // remove items from cart
 
   const handleRemoveFromCart = (id: number) => {
   const removedProduct = checkoutProduct.find(
@@ -97,7 +108,7 @@ export default function ThriftHappens() {
     )
   );
 };
-
+// empty cart
 const handleEmptyCheckout = () => {
   setProducts((previous) =>
     previous.map((item) => {
@@ -117,6 +128,13 @@ const handleEmptyCheckout = () => {
   setCheckoutProducts([]);
 };
 
+
+//Calculate TotalPrice
+  const TotalPrice = checkoutProduct.reduce((sum, entry) => sum + entry.quantity * entry.price, 0)
+  
+  
+
+
   return (
   <div>
     <h1>ThriftHappens</h1>
@@ -134,6 +152,7 @@ const handleEmptyCheckout = () => {
       handleRemoveFromCart={handleRemoveFromCart}
        handleEmptyCheckout={handleEmptyCheckout}
     />
+    <h2>Total: ${TotalPrice.toFixed(2)}</h2>
   </div>
 )
-};
+}
